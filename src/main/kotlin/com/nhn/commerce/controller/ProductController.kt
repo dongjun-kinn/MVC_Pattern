@@ -1,6 +1,7 @@
 package com.nhn.commerce.controller
 
 import com.nhn.commerce.service.ProductService
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.*
 class ProductController(
     private val productService: ProductService,
 ) {
+    private val log = LoggerFactory.getLogger(javaClass)
     @GetMapping("/product")
     fun getProductList(model: Model): String {
+        log.error("LogNCrash Error Test")
         model.addAttribute("productList", productService.findProductList())
         return "product"
     }
