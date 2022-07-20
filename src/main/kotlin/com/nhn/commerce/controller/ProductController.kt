@@ -2,6 +2,7 @@ package com.nhn.commerce.controller
 
 import com.nhn.commerce.model.Product
 import com.nhn.commerce.service.ProductService
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,9 +14,15 @@ import java.time.LocalDateTime
 class ProductController(
     private val productService: ProductService,
 ) {
+    private val log = LoggerFactory.getLogger(javaClass)
     @GetMapping("/product")
     fun getProductList(model: Model): String {
         model.addAttribute("productList", productService.findProductList())
+        return "product"
+    }
+    @GetMapping("/error")
+    fun getError(): String{
+        log.error("LogNCrash Error Test")
         return "product"
     }
 
