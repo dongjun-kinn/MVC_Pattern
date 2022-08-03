@@ -17,11 +17,6 @@ class ProductController(
     private val log = LoggerFactory.getLogger(javaClass)
     @GetMapping("/product")
     fun getProductList(model: Model): String {
-        model.addAttribute("productList", productService.findProductList())
-        return "product"
-    }
-    @GetMapping("/error")
-    fun getError(model: Model): String{
         log.error("LogNCrash Error Test")
         model.addAttribute("productList", productService.findProductList())
         return "product"
