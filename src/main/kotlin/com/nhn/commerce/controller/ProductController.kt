@@ -21,8 +21,9 @@ class ProductController(
         return "product"
     }
     @GetMapping("/error")
-    fun getError(): String{
+    fun getError(model: Model): String{
         log.error("LogNCrash Error Test")
+        model.addAttribute("productList", productService.findProductList())
         return "product"
     }
 
